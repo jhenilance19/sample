@@ -31,11 +31,11 @@
     <table class="table mx-auto " style="width: 800px;">
   <thead>
   <tr>
-                <td>NAME</td>
-                <td>QUANTITY</td>
-                <td>PRICE</td>
-                <td>DESCRIPTION</td>
-                <td>DELETE</td>
+                <th>NAME</th>
+                <th>QUANTITY</th>
+                <th>PRICE</th>
+                <th>DESCRIPTION</th>
+                <<th colspan="3"></th>
     </tr>    
            
   </thead>
@@ -45,13 +45,16 @@
                 <td>{{$product->qty}}</td>
                 <td>{{$product->price}}</td>
                 <td>{{$product->description}}</td>
-                <td>
-                    <form method="post" action="{{route('product.destroy',['product' => $product])}}">
+                <td colspan="2">
+                    <a type="button" href="{{route('product.edit', ['product' => $product])}}" class="btn btn-success">Edit</a>
+                    </td>
+                    <td>                   
+                    <form method="post"  action="{{route('product.destroy',['product' => $product])}}">
                         @csrf 
                         @method('delete')
-                        <input type="submit" value="Delete">
+                        <input type="submit" value="Delete" type="button" class="btn btn-danger">
                     </form>
-                </td>
+                    </td>
   </tbody>
   @endforeach
 
